@@ -1,0 +1,35 @@
+{
+    "title": "Script to run configuration",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-script.schema.json",
+    "properties": {
+        "cmd": {
+            "title": "Command to run",
+            "type": "string"
+        },
+        "file": {
+            "title": "File path to run",
+            "type": "string"
+        },
+        "fileIsIn": {
+            "title": "Where is the script file",
+            "enum": [
+                "host",
+                "container"
+            ]
+        },
+        "runIn": {
+            "title": "Container name - where the script should be run",
+            "type": "string"
+        },
+        "args": {
+            "title": "Script arguments",
+            "type": "array",
+            "items": {
+                "title": "Script argument",
+                "type": "string"
+            }
+        }
+    },
+    "additionalProperties": false
+}

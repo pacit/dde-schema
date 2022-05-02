@@ -1,0 +1,114 @@
+{
+    "title": "Workspace configuration",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/wrk.schema.json",
+    "properties": {
+        "$schema": {
+            "title": "File structure definition",
+            "type": "string"
+        },
+        "defaultEnvs": {
+            "title": "Default environment names",
+            "description": "Usen when no `-e/-es` argument present",
+            "type": "array",
+            "items": {
+                "title": "Environment name",
+                "type": "string"
+            }
+        },
+        "defaultVerFile": {
+            "title": "Default version file name",
+            "description": "Used when no `-vf` argument present",
+            "type": "string"
+        },
+        "properties": {
+            "title": "Workspace properties Map<String,String>",
+            "type": "object",
+            "patternProperties": {
+                ".{1,}": {
+                    "title": "Workspace property",
+                    "type": "string"
+                }
+            }
+        },
+        "dockerRepos": {
+            "title": "Docker remote repositories",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "Docker remote repository",
+                "properties": {
+                    "name": {
+                        "title": "Repository name",
+                        "description": "Used in project JSONs",
+                        "type": "string"
+                    },
+                    "protocol": {
+                        "title": "Repository protocol name",
+                        "type": "string"
+                    },
+                    "address": {
+                        "title": "Repository address",
+                        "type": "string"
+                    },
+                    "usernameFile": {
+                        "title": "Path to file with repository username",
+                        "type": "string"
+                    },
+                    "passwordFile": {
+                        "title": "Path to file with repository password",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "runScripts": {
+            "title": "Custom script definitions",
+            "description": "Scripts runs using `dde runs` command",
+            "type": "array",
+            "items": {
+                "title": "Custom script",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Script name",
+                        "type": "string"
+                    },
+                    "beforeRun": {
+                        "title": "Actions to run before all scripts",
+                        "type": "array",
+                        "items": {
+                            "title": "Action to run before all scripts",
+                            "type": "object",
+                            "properties": {
+                                "updateProject": {
+                                    "title": "Update project from git remote repository",
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "scripts": {
+                        "title": "Scripts to run",
+                        "type": "array",
+                        "items": {
+                            "$ref": "./c-script.schema.json"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "templateFileDirs": {
+            "title": "List of directories where are files to process as temaplates",
+            "type": "array",
+            "items": {
+                "title": "Directory with `tmpl-*` files",
+                "type": "string"
+            }
+        }
+    },
+    "additionalProperties": false
+}

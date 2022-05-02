@@ -1,0 +1,32 @@
+{
+    "title": "Docker network",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-docker-res-network.schema.json",
+    "properties": {
+        "name": {
+            "title": "Network name",
+            "type": "string"
+        },
+        "driver": {
+            "title": "Network driver",
+            "enum": ["bridge", "overlay"]
+        },
+        "subnet": {
+            "title": "Network subnet",
+            "type": "string"
+        },
+        "gateway": {
+            "title": "Network gateway",
+            "type": "string"
+        },
+        "ipRange": {
+            "title": "Network IP range",
+            "type": "string"
+        },
+        "attachable": {
+            "title": "Is container can attach this network",
+            "type": "boolean"
+        }
+    },
+    "additionalProperties": false
+}

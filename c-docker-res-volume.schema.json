@@ -1,0 +1,23 @@
+{
+    "title": "Docker volume",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-docker-res-volume.schema.json",
+    "properties": {
+        "name": {
+            "title": "Volume name",
+            "type": "string"
+        },
+        "driver": {
+            "title": "Volume driver",
+            "enum": ["bridge"]
+        },
+        "options": {
+            "title": "Driver specific options",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "additionalProperties": false
+}

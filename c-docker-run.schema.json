@@ -1,0 +1,125 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-docker-run.schema.json",
+    "title": "Docker run config",
+    "description": "Configuration used to run service",
+    "properties": {
+        "name": {
+            "title": "Service name",
+            "type": "string"
+        },
+        "hostname": {
+            "title": "Hostname",
+            "type": "string"
+        },
+        "replicas": {
+            "title": "Number of replicas",
+            "type": "integer"
+        },
+        "secrets": {
+            "title": "Secrets",
+            "type": "array",
+            "items": {
+                "title": "Secret",
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "title": "Secret source",
+                        "type": "string"
+                    },
+                    "target": {
+                        "title": "Secret target",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "configs": {
+            "title": "Configs",
+            "type": "array",
+            "items": {
+                "title": "Config",
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "title": "Config source",
+                        "type": "string"
+                    },
+                    "target": {
+                        "title": "Config target",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "networks": {
+            "title": "Networks",
+            "type": "array",
+            "items": {
+                "title": "Network name",
+                "type": "string"
+            }
+        },
+        "mounts": {
+            "title": "Volume mounts",
+            "type": "array",
+            "items": {
+                "title": "Volume mount",
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "title": "Mount type",
+                        "type": "string"
+                    },
+                    "source": {
+                        "title": "Mount source",
+                        "type": "string"
+                    },
+                    "destination": {
+                        "title": "Mount destination",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "publishPorts": {
+            "title": "Published ports",
+            "type": "array",
+            "items": {
+                "title": "Published port",
+                "type": "object",
+                "properties": {
+                    "published": {
+                        "title": "Host port number",
+                        "type": "string"
+                    },
+                    "target": {
+                        "title": "Container port number",
+                        "type": "string"
+                    },
+                    "protocol": {
+                        "title": "Protocol name",
+                        "type": "string"
+                    },
+                    "mode": {
+                        "title": "Publish mode",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "envs": {
+            "title": "Environment variables",
+            "type": "array",
+            "items": {
+                "title": "Environment variable {name}={value}",
+                "type": "string"
+            }
+        }
+    },
+    "additionalProperties": false
+}

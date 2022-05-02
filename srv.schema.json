@@ -1,0 +1,79 @@
+{
+    "title": "Service configuration",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/srv.schema.json",
+    "properties": {
+        "$schema": {
+            "title": "File structure definition",
+            "type": "string"
+        },
+        "project": {
+            "title": "Project name",
+            "description": "Project directory name",
+            "type": "string"
+        },
+        "scripts": {
+            "title": "Service scripts",
+            "type": "object",
+            "properties": {
+                "isRunning": {
+                    "title": "Script to check service state",
+                    "$ref": "./c-script.schema.json"
+                },
+                "beforeRun": {
+                    "title": "Scripts to execute before service run",
+                    "type": "array",
+                    "items": {
+                        "$ref": "./c-script.schema.json"
+                    }
+                },
+                "run": {
+                    "title": "Script to run service",
+                    "$ref": "./c-script.schema.json"
+                },
+                "afterRun": {
+                    "title": "Scripts to execute after service run",
+                    "type": "array",
+                    "items": {
+                        "$ref": "./c-script.schema.json"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "waitForServiceTimeoutS": {
+            "title": "Timeout to wait for service started in seconds",
+            "description": "Default is 60s",
+            "type": "integer"
+        },
+        "dependsOnSrv": {
+            "title": "Services which must be runs before",
+            "description": "{envName}:{srvName} list",
+            "type": "array",
+            "items": {
+                "title": "Service pointer: {envName}:{srvName}",
+                "type": "string"
+            }
+        },
+        "dockerResources": {
+            "title": "Service's docker resources",
+            "$ref": "./c-docker-res.schema.json"
+        },
+        "dockerRun": {
+            "title": "Service run configuration",
+            "description": "Used when no run script is configured",
+            "$ref": "./c-docker-run.schema.json"
+        },
+        "properties": {
+            "title": "Service properties Map<String,String>",
+            "type": "object",
+            "patternProperties": {
+                ".{1,}": {
+                    "title": "Service property",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

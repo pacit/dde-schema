@@ -1,0 +1,20 @@
+{
+    "title": "Docker config",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-docker-res-config.schema.json",
+    "properties": {
+        "name": {
+            "title": "Config name",
+            "type": "string"
+        },
+        "value": {
+            "title": "Config value",
+            "type": "string"
+        },
+        "file": {
+            "title": "Config file",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}

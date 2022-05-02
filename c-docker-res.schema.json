@@ -1,0 +1,37 @@
+{
+    "title": "Docker resources",
+    "description": "Resources created when env i preparing and removed when env is removing",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/c-docker-res.schema.json",
+    "properties": {
+        "networks": {
+            "title": "Docker Networks",
+            "type": "array",
+            "items": {
+                "$ref": "./c-docker-res-network.schema.json"
+            }
+        },
+        "secrets": {
+            "title": "Docker Secrets",
+            "type": "array",
+            "items": {
+                "$ref": "./c-docker-res-secret.schema.json"
+            }
+        },
+        "configs": {
+            "title": "Docker Configs",
+            "type": "array",
+            "items": {
+                "$ref": "./c-docker-res-config.schema.json"
+            }
+        },
+        "volumes": {
+            "title": "Docker Volumes",
+            "type": "array",
+            "items": {
+                "$ref": "./c-docker-res-volume.schema.json"
+            }
+        }
+    },
+    "additionalProperties": false
+}

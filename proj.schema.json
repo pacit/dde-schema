@@ -1,0 +1,56 @@
+{
+    "title": "Project configuration",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/pacit/dde-schema/main/proj.schema.json",
+    "properties": {
+        "$schema": {
+            "title": "File structure definition",
+            "type": "string"
+        },
+        "gitRepo": {
+            "title": "Project sources - git repository url",
+            "type": "string"
+        },
+        "scripts": {
+            "title": "Project scripts",
+            "type": "object",
+            "properties": {
+                "build": {
+                    "title": "Build script",
+                    "$ref": "./c-script.schema.json"
+                }
+            },
+            "additionalProperties": false
+        },
+        "dockerImages": {
+            "title": "Project alternative images",
+            "type": "array",
+            "items": {
+                "title": "Project alternative image",
+                "type": "object",
+                "properties": {
+                    "repoId": {
+                        "title": "Repository name (from workspace configuration)",
+                        "type": "string"
+                    },
+                    "imageName": {
+                        "title": "Project image name",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "properties": {
+            "title": "Project properties Map<String,String>",
+            "type": "object",
+            "patternProperties": {
+                ".{1,}": {
+                    "title": "Project property",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}
